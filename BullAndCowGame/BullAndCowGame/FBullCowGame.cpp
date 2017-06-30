@@ -8,16 +8,37 @@ FBullCowGame::FBullCowGame() {
 int32 FBullCowGame::GetMaxTries() const { return MyMaxTries; }
 int32 FBullCowGame::GetCurrentTry() const {	return MyCurrentTry; }
 
+
 // Setters
 void FBullCowGame::SetCurrentTry(int32 tryNumber) { MyCurrentTry = tryNumber; }
 
-FBullCowCount FBullCowGame::SubmitGuess(FString Guess)
+
+int32 FBullCowGame::GetWordLength() const {
+	return MyHiddenWord.length();
+}
+
+
+FString FBullCowGame::CreateHiddenWord()
 {
+	srand(time(NULL));
+	FString ListWords[] = {"planet","microwave","silent","playground","precaution","disturb","complain","moruya","countryside","night"};
+	int Num = rand() % 10 - 1;
+	FString Word = ListWords[Num];
+	return Word;
+}
+
+
+FBullCowCount FBullCowGame::SubmitGuess(FString Guess) {
 	FBullCowCount BullCowCount;
 	for (int32 i = 0; i < MyHiddenWord.length(); i++) {
-		for (int32 j = 0; j < MyHiddenWord.length(); j++) {
+		for (int32 j = 0; j < Guess.length(); j++) {
 			if (MyHiddenWord[i] == Guess[j]) {
-				BullCowCount.Bulls++;
+				if (i == j) {
+					BullCowCount.Bulls++;
+				}
+				else {
+					BullCowCount.Cows++;
+				}
 			}
 		}
 	}
@@ -28,12 +49,7 @@ FBullCowCount FBullCowGame::SubmitGuess(FString Guess)
 void FBullCowGame::Reset() {
 	MyCurrentTry	= 0;
 	MyMaxTries		= 8;
-	FString HIDDEN_WORD = "planet";
-	MyHiddenWord = HIDDEN_WORD;
-}
-
-bool FBullCowGame::IsGameWon() const {
-	return false;
+	MyHiddenWord = CreateHiddenWord();
 }
 
 bool FBullCowGame::CheckGuessValidity(FString) {

@@ -24,7 +24,7 @@ int main() {
 
 
 void IntroMessage() {
-	const int32 WORD_LENGTH = 5;
+	const int32 WORD_LENGTH = BCGame.GetWordLength();
 	// Initial game output
 	std::cout << "Welcome to Bulls and Cows, a fun word game\n";
 	std::cout << "Can you guess the " << WORD_LENGTH << " letter isogram I am thinking of?\n";
@@ -42,6 +42,10 @@ void PlayGame() {
 		FText Guess = GetGuess();
 		FBullCowCount BullCowCount = BCGame.SubmitGuess(Guess);
 		std::cout << "Bulls: " << BullCowCount.Bulls << " and Cows: " << BullCowCount.Cows << "!\n";
+		if (BullCowCount.Bulls == BCGame.GetWordLength()) {
+			std::cout << "Congratulations you guessed the correct word!\n";
+			return;
+		}
 	}
 }
 
