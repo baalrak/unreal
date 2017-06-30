@@ -17,6 +17,11 @@ int32 FBullCowGame::GetWordLength() const {
 	return MyHiddenWord.length();
 }
 
+FString FBullCowGame::GetHiddenWord() const
+{
+	return MyHiddenWord;
+}
+
 
 FString FBullCowGame::CreateHiddenWord()
 {

@@ -10,12 +10,12 @@ void IntroMessage();
 void PlayGame();
 FText GetGuess();
 bool AskToPlayAgain();
-
 FBullCowGame BCGame;
 
 int main() {
 	// Call initial game output
 	do {
+		BCGame.Reset();
 		IntroMessage();
 		PlayGame();
 	} while (AskToPlayAgain());
@@ -33,7 +33,6 @@ void IntroMessage() {
 
 
 void PlayGame() {
-	BCGame.Reset();
 	int32 MaxTries = BCGame.GetMaxTries();
 	// Get the guess from the player and repeat the guess back.
 	for (int32 i = 0; i < MaxTries; i++) {
@@ -47,6 +46,7 @@ void PlayGame() {
 			return;
 		}
 	}
+	std::cout << "\nUnfortunately you did not guess the isogram I was thinking of!\nThe isogram was: " << BCGame.GetHiddenWord() << "\nBetter luck next time!\n\n";
 }
 
 

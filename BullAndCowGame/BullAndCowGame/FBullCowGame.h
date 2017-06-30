@@ -19,6 +19,7 @@ public:
 	int32 GetMaxTries() const;
 	int32 GetCurrentTry() const;
 	int32 GetWordLength() const;
+	FString GetHiddenWord() const;
 	
 	void Reset(); // TODO: make a more rich return
 	bool CheckGuessValidity(FString);
