@@ -28,6 +28,12 @@ public:
 
 	FBullCowCount SubmitGuess(FString);
 
+	enum MyEnum {
+		OK,
+		CONTAINS_NUMBERS,
+		NOT_ISOGRAM
+	};
+
 
 private:
 	int32 MyCurrentTry;

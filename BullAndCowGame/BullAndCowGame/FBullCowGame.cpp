@@ -23,8 +23,7 @@ FString FBullCowGame::GetHiddenWord() const
 }
 
 
-FString FBullCowGame::CreateHiddenWord()
-{
+FString FBullCowGame::CreateHiddenWord() {
 	srand(time(NULL));
 	FString ListWords[] = {"planet","microwave","silent","playground","precaution","disturb","complain","moruya","countryside","night"};
 	int Num = rand() % 10 - 1;
@@ -54,9 +53,14 @@ FBullCowCount FBullCowGame::SubmitGuess(FString Guess) {
 void FBullCowGame::Reset() {
 	MyCurrentTry	= 0;
 	MyMaxTries		= 8;
-	MyHiddenWord = CreateHiddenWord();
+	MyHiddenWord = CreateHiddenWord(); 
 }
 
-bool FBullCowGame::CheckGuessValidity(FString) {
-	return false;
+bool FBullCowGame::CheckGuessValidity(FString guess) {
+	MyEnum Status = MyEnum::CONTAINS_NUMBERS; // TODO FINISH THIS METHOD
+
+	switch (Status) {
+
+	default: return true;
+	}
 }
